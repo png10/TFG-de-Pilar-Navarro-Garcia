@@ -1,0 +1,397 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "mi casa",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "Adiós"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "DescribeScreenIntent",
+                    "slots": [
+                        {
+                            "name": "CurrentScreen",
+                            "type": "CurrentScreen"
+                        }
+                    ],
+                    "samples": [
+                        "Qué hago en {CurrentScreen}",
+                        "Qué puedo hacer en {CurrentScreen}",
+                        "Qué hago en este menú",
+                        "Dime qué hace este menú",
+                        "Qué hago en la opción {CurrentScreen}",
+                        "Qué hago en el menú {CurrentScreen}",
+                        "Dime qué hace esta pantalla",
+                        "Qué puedo hacer en esta opción",
+                        "Qué puedo hacer en la opción {CurrentScreen}",
+                        "Qué puedo hacer en este menú",
+                        "Qué puedo hacer aquí",
+                        "Qué puedo hacer en el menú {CurrentScreen}"
+                    ]
+                },
+                {
+                    "name": "GetLightsIntent",
+                    "slots": [],
+                    "samples": [
+                        "Cuál es el estado de mis luces",
+                        "Cómo están las luces de mi casa",
+                        "Cómo están las luces",
+                        "Cómo están mis luces",
+                        "Cuál es el estado de las luces de mi casa"
+                    ]
+                },
+                {
+                    "name": "GetSpecificLightIntent",
+                    "slots": [
+                        {
+                            "name": "SpecificLight",
+                            "type": "LightDevice"
+                        }
+                    ],
+                    "samples": [
+                        "Cómo he dejado {SpecificLight}",
+                        "Cómo está {SpecificLight}",
+                        "Cómo he dejado la {SpecificLight}",
+                        "Cómo está la {SpecificLight}",
+                        "Cuál es el estado de la {SpecificLight}"
+                    ]
+                },
+                {
+                    "name": "GetAllSensorsIntent",
+                    "slots": [],
+                    "samples": [
+                        "Cómo están los sensores de mi casa",
+                        "Cómo están los sensores",
+                        "Cuál es el estado de los sensores de mi casa",
+                        "Cuál es el estado de mis sensores"
+                    ]
+                },
+                {
+                    "name": "GetSpecificSensorIntent",
+                    "slots": [
+                        {
+                            "name": "SpecificSensor",
+                            "type": "SensorDevice"
+                        }
+                    ],
+                    "samples": [
+                        "Qué {SpecificSensor} mide el sensor de {SpecificSensor}",
+                        "Qué {SpecificSensor} mide el sensor",
+                        "Qué {SpecificSensor} hay",
+                        "Qué mide el sensor de {SpecificSensor}",
+                        "Cuál es la lectura del sensor de {SpecificSensor}",
+                        "Cuál es el estado del sensor de {SpecificSensor}"
+                    ]
+                },
+                {
+                    "name": "UpdateDeviceIntent",
+                    "slots": [
+                        {
+                            "name": "LightAction",
+                            "type": "LightAction"
+                        },
+                        {
+                            "name": "LightDevice",
+                            "type": "LightDevice"
+                        }
+                    ],
+                    "samples": [
+                        "{LightAction} {LightDevice}",
+                        "{LightAction} la {LightDevice}"
+                    ]
+                },
+                {
+                    "name": "ProgramLightsIntent",
+                    "slots": [
+                        {
+                            "name": "LightDevice",
+                            "type": "LightDevice",
+                            "samples": [
+                                "Todas las luces",
+                                "La {LightDevice}  y la {LightDevice}",
+                                "La {LightDevice}"
+                            ]
+                        },
+                        {
+                            "name": "Percentage",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "el {Percentage} por ciento",
+                                "el {Percentage}",
+                                "{Percentage} por ciento",
+                                "{Percentage}"
+                            ]
+                        },
+                        {
+                            "name": "LightAction",
+                            "type": "LightAction"
+                        }
+                    ],
+                    "samples": [
+                        "programa el encendido de las luces",
+                        "programa las luces",
+                        "programa que la {LightDevice} se encienda cuando haya un {Percentage} por ciento de luz",
+                        "programa el encendido de la {LightDevice} y la {LightDevice} cuando la luz sea menor del {Percentage} por ciento",
+                        "programa el encendido de la {LightDevice} cuando la luz sea menor del {Percentage} por ciento"
+                    ]
+                },
+                {
+                    "name": "DeprogramLightsIntent",
+                    "slots": [],
+                    "samples": [
+                        "desactiva el programa",
+                        "quita el programa",
+                        "desactiva el programa de las luces",
+                        "quita el programa de las luces"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "CurrentScreen",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "programar luces"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "configuración"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "ambiente"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "luces"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "menú principal"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LightDevice",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "todas las bombillas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "las bombillas"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "las luces"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "de la habitación"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "del pasillo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "de la cocina"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "todas las luces",
+                                "synonyms": [
+                                    "las bombillas",
+                                    "las luces",
+                                    "todas las bombillas"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "luz de la habitación"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "luz del pasillo"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "luz de la cocina"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "SensorDevice",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "luz"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "luminosidad",
+                                "synonyms": [
+                                    "luz"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "humedad"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "temperatura"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "LightAction",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "apague"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "encienda"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "apaga"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "enciende"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "ProgramLightsIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "LightDevice",
+                            "type": "LightDevice",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.135790815128.1524319078461"
+                            }
+                        },
+                        {
+                            "name": "Percentage",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.135790815128.1552078769855"
+                            }
+                        },
+                        {
+                            "name": "LightAction",
+                            "type": "LightAction",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "UpdateDeviceIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "LightAction",
+                            "type": "LightAction",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "LightDevice",
+                            "type": "LightDevice",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.135790815128.1524319078461",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Qué luz o luces quieres programar?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.135790815128.1552078769855",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿A partir de qué porcentaje de luz?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "¿Con qué nivel de luminosidad, en porcentaje, quieres programar las luces?"
+                    }
+                ]
+            }
+        ]
+    }
+}
