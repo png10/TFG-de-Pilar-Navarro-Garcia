@@ -39,6 +39,8 @@ Ticker timer;
 StaticJsonDocument<500> doc;
 char buffer[1000];
 
+bool fromAlexa = false;
+
 
 // ********************************************************************************
 
@@ -98,6 +100,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
   deserializeJson(doc, payload);
   serializeJsonPretty(doc, buffer); 
   Serial.println(buffer); // print the msg received to debug
+
+  if(strcmp(topic, "alexaTopic") == 0){
+    fromAlexa = true;
+  }else fromAlexa = false;
 
   if((doc["state"]["desired"]["luz_cocina"].as<String>() != "null" or doc["state"]["desired"]["luz_pasillo"].as<String>() != "null" 
   or doc["state"]["desired"]["luz_habitacion"].as<String>() != "null") and doc["state"]["desired"]["luz_pasillo"].as<String>() != "requested"){ // MENU LUCES (cambiar estado)
@@ -213,7 +219,7 @@ void publish_json_luces(String pasillo, String cocina, String habitacion, String
   request += "\" }}}";
 
   doc["request"] = request;
-  client.publish("reportedTopic", doc["request"].as<char*>());
+  if(!fromAlexa) client.publish("reportedTopic", doc["request"].as<char*>());
   client.publish("$aws/things/NodeMCU-with-devices/shadow/update", doc["request"].as<char*>());
 }
 
@@ -243,7 +249,7 @@ void publish_json_programa(String activado, String luminosidad, String pasillo, 
   request += "\" }}}";
 
   doc["request"] = request;
-  client.publish("reportedTopic", doc["request"].as<char*>());
+  if(!fromAlexa) client.publish("reportedTopic", doc["request"].as<char*>());
   if(publish) client.publish("$aws/things/NodeMCU-with-devices/shadow/update", doc["request"].as<char*>());
 }
 
@@ -267,7 +273,7 @@ void publish_json_ambiente(String temperatura, String humedad, String luminosida
   request += "\" }}}";
 
   doc["request"] = request;
-  client.publish("reportedTopic", doc["request"].as<char*>());
+  if(!fromAlexa) client.publish("reportedTopic", doc["request"].as<char*>());
   client.publish("$aws/things/NodeMCU-with-devices/shadow/update", doc["request"].as<char*>());
 }
 
@@ -368,6 +374,7 @@ void pubSubCheckConnect() {
     digitalWrite(LED_BUILTIN, LOW);
     Serial.println(" connected");
     client.subscribe("desiredTopic");
+    client.subscribe("alexaTopic");
   }
   digitalWrite(LED_BUILTIN, LOW);
   client.loop();
