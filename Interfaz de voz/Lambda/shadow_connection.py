@@ -9,7 +9,7 @@ client = boto3.client('iot-data', region_name = 'eu-central-1')
 
 
 def read_shadow():
-    # Devuelve el reported state del shadow del thing "NodeMCU-with-devices" en formato JSON.
+    # Lee y devuelve el reported state del shadow del thing "NodeMCU-with-devices" en formato JSON.
     shadow = client.get_thing_shadow(thingName = thing_name)
     payload = json.load(shadow['payload'])
     return payload['state']['reported']
@@ -18,12 +18,12 @@ def read_shadow():
 def update_shadow(updated):
     
     client.publish(topic = '$aws/things/NodeMCU-with-devices/shadow/update', qos = 1, payload = updated)
-    client.publish(topic = 'desiredTopic', qos = 1, payload = updated)
+    client.publish(topic = 'alexaTopic', qos = 1, payload = updated)
     
     
 def send_request_and_wait_for_response(request):
     
-    client.publish(topic = 'desiredTopic', qos = 1, payload = request)
+    client.publish(topic = 'alexaTopic', qos = 1, payload = request)
     time.sleep(2.5)
     done = False
     

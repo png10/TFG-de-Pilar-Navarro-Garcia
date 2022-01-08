@@ -75,10 +75,12 @@ def get_screen_response(pantalla, is_current_screen):
     else: output = "En el menú " + pantalla + " "
     
     if pantalla == "principal":
-        output += "puedes acceder a las cuatro opciones disponibles: luces, para encender o apagar las luces de tu casa; "
+        output += "puedes acceder a las cuatro opciones disponibles: luces, programa, ambiente o configuración. Si quieres saber qué puedes hacer en uno de ellos puedes decir: "
+        output += "qué puedo hacer en el menú luces."
+        """output += "puedes acceder a las cuatro opciones disponibles: luces, para encender o apagar las luces de tu casa; "
         output += "programa, para  programar qué luces de tu casa quieres que se enciendan cuando el nivel de luminosidad sea menor de un porcentaje elegido por ti; "
         output += "ambiente, para ver la temperatura, humedad y luminosidad de tu casa; "
-        output += "o configuración, para configurar varios parámetros de la aplicación como el tamaño de letra, activar o desactivar iconos y sonidos y poner la aplicación en modo daltónico o de alto contraste.";
+        output += "o configuración, para configurar varios parámetros de la aplicación como el tamaño de letra, activar o desactivar iconos y sonidos y poner la aplicación en modo daltónico o de alto contraste.";"""
     elif pantalla == "luces":
         output += "puedes encender o apagar las luces de tu casa."
     elif pantalla == "programa":
@@ -106,7 +108,8 @@ def get_lights_response(cocina, pasillo, habitacion):
         state_habitacion = "encendida"
     else: state_habitacion = "apagada"
     
-    output = "La luz de la cocina está " + state_cocina + ", la luz del pasillo está " + state_pasillo + " y la luz de la habitación está " + state_habitacion + "."
+    output = "La luz del pasillo está " + state_pasillo + ", la luz de la cocina está " + state_cocina + " y la luz de la habitación está " + state_habitacion + "."
+    #output = "La luz de la cocina está " + state_cocina + ", la luz del pasillo está " + state_pasillo + " y la luz de la habitación está " + state_habitacion + "."
     #print(output)
     return build_response(attributes, build_speechlet_response(card, output, None, False))
 
@@ -206,10 +209,3 @@ def deprogram_lights_response(deprogrammed):
     
     #print(output)
     return build_response(attributes, build_speechlet_response(card, output, None, False))
-
-
-"""def debug_response(var1, var2):
-    attributes = {}
-    card = "Debugging"
-    output = "Variable 1, ", var1, ". Variable 2, " + var2
-    return build_response(attributes, build_speechlet_response(card, output, None, False))"""
